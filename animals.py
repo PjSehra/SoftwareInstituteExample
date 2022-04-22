@@ -466,8 +466,10 @@ for x in range(0,len(final_array)):
         print(temporary_animal.eat(testing_eating_animal))
 
         if (temporary_animal.eat(testing_eating_animal) == True):
-            print(temporary_animal.value)
-            print(testing_eating_animal.value)
+            
+            #print(temporary_animal.value)
+            #print(testing_eating_animal.value)
+            
             final.append(temporary_animal.value + " eats " + testing_eating_animal.value)
             
         else:
