@@ -184,7 +184,7 @@ class Leaf():
         return self.value
 
     def eat(self, Animal):
-        ("I cannot eat anything") 
+        return ("I cannot eat anything") 
         
 
 class Bear(Animal):
@@ -448,62 +448,147 @@ for x in range(0,len(array)):
     else:
         continue
 
+print(final_array)
+print(final)
 
-for x in range(0,len(final_array)):
+counter = 0
+
+try:
+
+    while len(final_array) > 0:
+        
+        print (counter)
+        print(final_array)
+        print(final)
+        
+        temporary_animal = final_array[counter]
+        
+        if (counter == 0 and (len(final_array) > 2)):
+            
+            testing_eating_animal = final_array[counter+1]
+            
+            if (temporary_animal.eat(testing_eating_animal) == True):
+                
+                final.append(final.append(temporary_animal.value + " eats " + testing_eating_animal.value))
+                final_array.remove(testing_eating_animal)
+                
+                counter = 0
     
-    temporary_animal = final_array[x]
-    
-    for j in range(0,len(final_array)):
+                
+            else:
+                
+                final.append(temporary_animal.value + " can't eat " + testing_eating_animal.value)
+                
+                counter += 1
         
-        testing_eating_animal = final_array[j]
-        
-        print(temporary_animal.value)
-        print(testing_eating_animal.value)
-
-        #temporary_animal = Fox
-        #testing_eating_animal = Bug
-        
-        print(temporary_animal.eat(testing_eating_animal))
-
-        if (temporary_animal.eat(testing_eating_animal) == True):
+        elif (len(final_array) > 2):
             
-            #print(temporary_animal.value)
-            #print(testing_eating_animal.value)
+            testing_eating_animal = final_array[counter+1]
             
-            final.append(temporary_animal.value + " eats " + testing_eating_animal.value)
-            
+            if (temporary_animal.eat(testing_eating_animal) == True):
+                
+                final.append(final.append(temporary_animal.value + " eats " + testing_eating_animal.value))
+                final_array.remove(testing_eating_animal)
+                
+            else:
+                
+                final.append(temporary_animal.value + " can't eat " + testing_eating_animal.value)
+                
+                testing_eating_animal = final_array[counter-1]
+                
+                if (temporary_animal.eat(testing_eating_animal) == True):
+                
+                    final.append(final.append(temporary_animal.value + " eats " + testing_eating_animal.value))
+                    final_array.remove(testing_eating_animal)
+                    
+                    counter = 0
+                    
+                else:
+                    
+                    final.append(temporary_animal.value + " can't eat " + testing_eating_animal.value)
+                    
+                    counter += 1
+                
         else:
+            print("FDFFDDDDDD")
+            temporary_animal = final_array[0]
+            testing_eating_animal = final_array[1]
             
-            final.append(temporary_animal.value + " can't eat " + testing_eating_animal.value)
+            if (temporary_animal.eat(testing_eating_animal) == True):
+                
+                final.append(final.append(temporary_animal.value + " eats " + testing_eating_animal.value))
+                final_array.remove(testing_eating_animal)
+                
+            else:
+               
+                temporary_animal = final_array[1]
+                testing_eating_animal = final_array[0]
+                
+                if (temporary_animal.eat(testing_eating_animal) == True):
+                
+                    final.append(final.append(temporary_animal.value + " eats " + testing_eating_animal.value))
+                    final_array.remove(testing_eating_animal)
+                    
+                else:
+                    continue
+                
+            
+            continue
 
+#we are in this bit when we are that the last element of the array of animals, and we have tried to check with the animal to the right of this 
+#last element. As this will cause an error, we know that we need to check the animal to the left, which is what the following below does                
+except:
+    temporary_animal = final_array[counter]
+    testing_eating_animal = final_array[counter-1]
+    
+    if (temporary_animal.eat(testing_eating_animal) == True):
+                
+                final.append(final.append(temporary_animal.value + " eats " + testing_eating_animal.value))
+                final_array.remove(testing_eating_animal)
+                
+                counter = 0
+                
+    else:
+        final.append(temporary_animal.value + " can't eat " + testing_eating_animal.value)  
+    
+    
+          
+
+print(final)
 
 #for x in range(0,len(final_array)):
     
 #    temporary_animal = final_array[x]
     
-#    for j in range(x+1,len(final_array)):
+#    for j in range(0,len(final_array)):
         
 #        testing_eating_animal = final_array[j]
-        
-#        temporary_string = ""
-        
         
 #        print(temporary_animal.value)
 #        print(testing_eating_animal.value)
 
         
+        
 #        print(temporary_animal.eat(testing_eating_animal))
 
 #        if (temporary_animal.eat(testing_eating_animal) == True):
-#            print(temporary_animal.value)
-#            print(testing_eating_animal.value)
+            
+            
+            
 #            final.append(temporary_animal.value + " eats " + testing_eating_animal.value)
+            
+#        elif (temporary_animal.eat(testing_eating_animal) == ("I cannot eat anything")):
+            
+#            final.append(temporary_animal + "can't eat anything")
             
 #        else:
             
 #            final.append(temporary_animal.value + " can't eat " + testing_eating_animal.value)
+
+
+
         
-print(final)
+#print(final)
             
             
     
